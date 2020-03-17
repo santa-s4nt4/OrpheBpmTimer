@@ -4,7 +4,11 @@
 */
 
 #define USE_ARDUINO_INTERRUPTS true    // Set-up low-level interrupts for most acurate BPM math.
-#include <PulseSensorPlayground.h>     // Includes the PulseSensorPlayground Library.   
+#include <PulseSensorPlayground.h>     // Includes the PulseSensorPlayground Library. 
+//#include <SoftwareSerial.h>
+//#define tx 1
+//#define rx 0
+//SoftwareSerial btSerial(rx,tx);  
 
 //  Variables
 int Threshold = 550;           // Determine which Signal to "count as a beat" and which to ignore.
@@ -14,8 +18,7 @@ int Threshold = 550;           // Determine which Signal to "count as a beat" an
 PulseSensorPlayground pulseSensor;  // Creates an instance of the PulseSensorPlayground object called "pulseSensor"
 
 
-void setup() {   
-
+void setup() {
   Serial.begin(115200);
   //Serial.begin(9600);          // For Serial Monitor
 
@@ -40,10 +43,9 @@ void loop() {
 //    Serial.print("BPM: ");                        // Print phrase "BPM: " 
 //    Serial.println(myBPM);                        // Print the value inside of myBPM. 
     Serial.write(myBPM);
+    //btSerial.write(myBPM);
   }
 
   delay(20);                    // considered best practice in a simple sketch.
 
 }
-
-  
